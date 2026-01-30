@@ -11,7 +11,7 @@ public class FlipperController : MonoBehaviour
     {
         if (isMoving)
         {
-            transform.position += Vector3.right * direction * speed * Time.deltaTime;
+            transform.position += transform.right * direction * speed * Time.deltaTime;
         }
     }
 
@@ -19,7 +19,7 @@ public class FlipperController : MonoBehaviour
     public void OnMoveClick()
     {
         isMoving = true;
-        direction = 1f;
+       
     }
 
     public void OnStopClick()
