@@ -11,7 +11,7 @@ public class catmove : MonoBehaviour
    private float gravity = -0.2f;
     // Gravity strength, controls how strongly the object is pulled downward each frame
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // Start is called once before the first execution of Update after the MonoBehaviour is created 
     void Start()
     {
         
