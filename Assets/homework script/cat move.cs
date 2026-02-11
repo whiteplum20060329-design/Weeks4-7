@@ -8,7 +8,7 @@ public class catmove : MonoBehaviour
 
     private float direction = 1f;
 
-   private float gravity = -0.2f;
+   private float gravity = -0.35f;
     // Gravity strength, controls how strongly the object is pulled downward each frame
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created 
@@ -34,8 +34,39 @@ public class catmove : MonoBehaviour
           
 
         }
+       
         transform.position += new Vector3(0, gravity, 0) * Time.deltaTime;//I used a  variable to simulate gravity.
-       // Gravity reduces every frame, creating a natural motion where the object  falls.
+                                                                          // Gravity reduces every frame, creating a natural motion where the object  falls.
 
+        Vector3 Pos= Camera.main.WorldToScreenPoint(transform.position);
+        // Convert the object's world position into screen space 
+        // We do this so we can check whether the object is outside the screen boundaries
+        if (Pos.x > Screen.width)
+        {
+           
+            Pos.x = Screen.width;
+        }
+        if (Pos.x < 0)
+        {
+           
+            Pos.x = 0;
+
+        }
+        if (Pos.y > Screen.height)
+        {
+           
+            Pos.y = Screen.height;
+        }
+        if (Pos.y < 0)
+        {
+           
+            Pos.y = 0;
+
+        }
+        Vector3 worldPos = Camera.main.ScreenToWorldPoint(Pos);
+        //Convert the clamped screen position back into world space
+       // Unity objects must be positioned using world coordinates
+        worldPos.z = 0;
+        transform.position = worldPos;
     }
 }
