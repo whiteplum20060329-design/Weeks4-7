@@ -1,7 +1,11 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class gunmove : MonoBehaviour
 {
+    public Slider slider;
+    public TextMeshProUGUI slidervalue;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -11,7 +15,7 @@ public class gunmove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        slidervalue.text = slider.value.ToString();
     }
 
     public void rotate(float rotategun)
