@@ -7,6 +7,8 @@ using UnityEngine.UIElements;
 
 public class gun : MonoBehaviour
 {
+
+   public  GameObject Prefab;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,9 +29,31 @@ public class gun : MonoBehaviour
 
         Vector3 worldMouse = Camera.main.ScreenToWorldPoint(MousePos);
 
+        MousePos.z = 0;
+
+        //I solved the turret rotation by using transform.up instead of calculating angles.
+        //I assigned transform.up to the direction between the turret and the mouse position.
+        //Unity automatically rotated the object so that its up direction faced the mouse.
+
+        //codegym 2
+        transform.up = MousePos - transform.position;
 
 
-        transform.eulerAngles +=transform.forward * MousePos.z;
+        if (Mouse.current.leftButton.isPressed)
+
+           
+        {
+
+           
+            GameObject spawnedObject = Instantiate(Prefab, transform.position, Quaternion.identity);
+            //
+
+
+        }
+
+
+
+        
 
      
 
