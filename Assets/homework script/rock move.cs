@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class rockmove : MonoBehaviour
 {
@@ -7,7 +8,9 @@ public class rockmove : MonoBehaviour
     public float progress;
     public Vector3 output;
     public float boomdistance;
-    public bool boom;
+   
+    
+   
 
 
     public float duration;
@@ -30,6 +33,8 @@ public class rockmove : MonoBehaviour
         transform.position = output;
 
         Debug.Log(Vector2.Distance(transform.position, end.position));
+
+
 
     
         if (Vector2.Distance(transform.position, end.position) < boomdistance)
@@ -64,6 +69,8 @@ public class rockmove : MonoBehaviour
 
 // This script runs every frame, which allows the rock
 // to continuously check its distance to the cat while moving.
+
+
 
 
 

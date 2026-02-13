@@ -8,7 +8,7 @@ public class rock : MonoBehaviour
     public float waitDuration;
     private float waitprogress = 0f;
     public Transform cat;
-   public bool ableSpawn=true;
+  
 
 
 
@@ -28,7 +28,10 @@ public class rock : MonoBehaviour
             GameObject rock = Instantiate(Prefab, transform.position, Quaternion.identity);
             //ableSpawn = false;
             rockmove rockmove = rock.GetComponent<rockmove>();
+
             SpriteRenderer rockrenderer= rock.GetComponent<SpriteRenderer>();
+
+            //pawmove  pawmove= pawmove.GetComponent<paw>();
             // A random color is assigned to each rock
             // to add visual variety and avoid repetition.
             rockrenderer.color = Random.ColorHSV();
@@ -40,6 +43,7 @@ public class rock : MonoBehaviour
             rockmove.transform.position = Vector3.one * Random.insideUnitCircle * 10;
             waitprogress = 0f;
 
+            //rockmove.shoot = pawmove.transform.position;
 
 
 
