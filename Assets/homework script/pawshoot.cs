@@ -18,7 +18,9 @@ public class pawshoot : MonoBehaviour
   
     public Transform fireshoot;
 
-    public Transform gun;
+    public Transform rotationPos;
+
+    
 
 
     public GameObject Prefab;
@@ -27,6 +29,7 @@ public class pawshoot : MonoBehaviour
     public Transform cat;
 
     public Transform currentrock;
+    public healthtbar healthtbar;
     // currentrock stores the most recently spawned rock,
     // so the bullet can aim at it later.
 
@@ -82,6 +85,8 @@ public class pawshoot : MonoBehaviour
                 rockmove.transform.position = Vector3.one * Random.insideUnitCircle * 10;
                 waitprogress = 0f;
 
+                rockmove.healthB= healthtbar;
+
             //3
             //get rock prefab position and then
             //use public transform to get it and use in other scripts
@@ -99,11 +104,13 @@ public class pawshoot : MonoBehaviour
 
             
         }
+
+
     }
        public void Shoot()
         {
           
-            GameObject paw = Instantiate(Prefabpaw, fireshoot.position, gun.rotation);
+            GameObject paw = Instantiate(Prefabpaw, fireshoot.position, rotationPos.rotation);
         // In Shoot(), I instantiate a bullet at the fireshoot position.
         pawmove pawmove = paw.GetComponent<pawmove>();
             pawmove.rockpos = currentrock;

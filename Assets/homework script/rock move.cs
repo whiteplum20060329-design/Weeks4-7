@@ -10,12 +10,8 @@ public class rockmove : MonoBehaviour
     public float boomdistance;
 
     public float dis;
-   
-    
-   
-
-
-    public float duration;
+    public healthtbar healthB;
+   public float duration;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -43,8 +39,9 @@ public class rockmove : MonoBehaviour
         if (dis < boomdistance)
         {
             Destroy(gameObject);
+            healthB.health.value -= 1f;
         }
-        // When the distance becomes smaller than the defined value,
+        //When the distance becomes smaller than the defined value,
         // the rock is considered to have hit the cat.
         // The rock then destroys itself to simulate the collision effect.
     }
