@@ -82,6 +82,10 @@ public class pawshoot : MonoBehaviour
                 rockmove.transform.position = Vector3.one * Random.insideUnitCircle * 10;
                 waitprogress = 0f;
 
+            //3
+            //get rock prefab position and then
+            //use public transform to get it and use in other scripts
+
                 currentrock = rock.transform;
 
                 // I use a timer to spawn rocks at fixed time intervals
