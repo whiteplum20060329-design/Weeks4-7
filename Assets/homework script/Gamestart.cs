@@ -35,8 +35,9 @@ public class Gamestart : MonoBehaviour
     public void notstart()
     {
         // In Start(), the game is set to the "not started" state.
-       
+        //use setactive to manage them
         // notstart() hides all gameplay objects and shows the start screen.
+        //4
         cat.SetActive(false);
      
         start.SetActive(true);
