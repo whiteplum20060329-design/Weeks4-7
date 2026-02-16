@@ -18,8 +18,7 @@ public class pawshoot : MonoBehaviour
   
     public Transform fireshoot;
 
-    
-
+    public Transform gun;
 
 
     public GameObject Prefab;
@@ -27,7 +26,7 @@ public class pawshoot : MonoBehaviour
     private float waitprogress = 0f;
     public Transform cat;
 
-    private Transform currentrock;
+    public Transform currentrock;
     // currentrock stores the most recently spawned rock,
     // so the bullet can aim at it later.
 
@@ -41,76 +40,66 @@ public class pawshoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        waitprogress += Time.deltaTime;// Instead of spawning all rocks at once,
-                                       // a timer is used so rocks appear periodically.
 
-        //Vector3 offscreen = new Vector3(100, 0, 0);
-        //GameObject paw = Instantiate(Prefabpaw, offscreen, transform.rotation);
-        //pawmove pawmove = paw.GetComponent<pawmove>();
+        
+        
+            waitprogress += Time.deltaTime;// Instead of spawning all rocks at once,
+                                           // a timer is used so rocks appear periodically.
 
-
-        //I left this wrong idea for recording, because I found that I had to move these two prefabricated parts
-        //into a script, and they had to have a certain position order so that they could get some information
-        //from each other. So at the beginning, I thought of this method to generate a lot of paws,
-        //but only when the keyboard was clicked down in that frame, he would move to the position of the gun,
-        //forming such a fake effect of shooting. But later I found that this actually didn't work.
-        //Because countless paws were generated,
-        //my distance judgment was completely chaotic, so my distance judgment could not take effect.
+            //Vector3 offscreen = new Vector3(100, 0, 0);
+            //GameObject paw = Instantiate(Prefabpaw, offscreen, transform.rotation);
+            //pawmove pawmove = paw.GetComponent<pawmove>();
 
 
-        // a timer is used so rocks appear periodically.
-        if ((waitprogress > waitDuration))
-        {
-            GameObject rock = Instantiate(Prefab, transform.position, Quaternion.identity);
-           
-            rockmove rockmove = rock.GetComponent<rockmove>();
-
-            SpriteRenderer rockrenderer = rock.GetComponent<SpriteRenderer>();
-
-          
+            //I left this wrong idea for recording, because I found that I had to move these two prefabricated parts
+            //into a script, and they had to have a certain position order so that they could get some information
+            //from each other. So at the beginning, I thought of this method to generate a lot of paws,
+            //but only when the keyboard was clicked down in that frame, he would move to the position of the gun,
+            //forming such a fake effect of shooting. But later I found that this actually didn't work.
+            //Because countless paws were generated,
+            //my distance judgment was completely chaotic, so my distance judgment could not take effect.
 
 
+            // a timer is used so rocks appear periodically.
+            if ((waitprogress > waitDuration))
+            {
+                GameObject rock = Instantiate(Prefab, transform.position, Quaternion.identity);
 
+                rockmove rockmove = rock.GetComponent<rockmove>();
 
-
-            // A random color is assigned to each rock
-            // to add visual variety and avoid repetition.
-            rockrenderer.color = Random.ColorHSV();
-            // After spawning, the rock's movement script is accessed
-            // so the the cat can be assigned.
-            rockmove.end = cat;
-            // The rock is also moved to a random position
-            // so that each spawn feels different.
-            rockmove.transform.position = Vector3.one * Random.insideUnitCircle * 10;
-            waitprogress = 0f;
-
-            currentrock = rock.transform;
-
-            // I use a timer to spawn rocks at fixed time intervals
-            // because spawning too many rocks at once would make the game too difficult.
-
-
-            // Although the later gameplay systems are not fully implemented yet,
-            // I already considered how spawning frequency affects player experience.
-
-            // Spawning only one or two rocks at a time creates a more manageable pace,
+                SpriteRenderer rockrenderer = rock.GetComponent<SpriteRenderer>();
 
 
 
+                // A random color is assigned to each rock
+                // to add visual variety and avoid repetition.
+                rockrenderer.color = Random.ColorHSV();
+                // After spawning, the rock's movement script is accessed
+                // so the the cat can be assigned.
+                rockmove.end = cat;
+                // The rock is also moved to a random position
+                // so that each spawn feels different.
+                rockmove.transform.position = Vector3.one * Random.insideUnitCircle * 10;
+                waitprogress = 0f;
+
+                currentrock = rock.transform;
+
+                // I use a timer to spawn rocks at fixed time intervals
+                // because spawning too many rocks at once would make the game too difficult.
 
 
+                // Although the later gameplay systems are not fully implemented yet,
+                // I already considered how spawning frequency affects player experience.
 
+                // Spawning only one or two rocks at a time creates a more manageable pace,
 
-
-
-
+            
         }
     }
-
        public void Shoot()
         {
           
-            GameObject paw = Instantiate(Prefabpaw, fireshoot.position, transform.rotation);
+            GameObject paw = Instantiate(Prefabpaw, fireshoot.position, gun.rotation);
         // In Shoot(), I instantiate a bullet at the fireshoot position.
         pawmove pawmove = paw.GetComponent<pawmove>();
             pawmove.rockpos = currentrock;

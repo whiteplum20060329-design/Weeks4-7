@@ -8,6 +8,8 @@ public class rockmove : MonoBehaviour
     public float progress;
     public Vector3 output;
     public float boomdistance;
+
+    public float dis;
    
     
    
@@ -34,10 +36,11 @@ public class rockmove : MonoBehaviour
 
         Debug.Log(Vector2.Distance(transform.position, end.position));
 
+        dis = Vector2.Distance(transform.position, end.position);
 
 
-    
-        if (Vector2.Distance(transform.position, end.position) < boomdistance)
+
+        if (dis < boomdistance)
         {
             Destroy(gameObject);
         }

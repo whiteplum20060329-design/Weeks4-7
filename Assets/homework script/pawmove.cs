@@ -17,6 +17,7 @@ public class pawmove : MonoBehaviour
     public float speed;
     public float shootdistance;
      public Transform rockpos;
+ 
 
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -28,7 +29,9 @@ public class pawmove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         transform.position += transform.up * speed * Time.deltaTime;
+
 
         if (Vector2.Distance(transform.position, rockpos.position) < shootdistance)
         // Each frame, I calculate the distance between the bullet
